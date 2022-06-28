@@ -63,14 +63,18 @@ Aqui vemos los registros de la tabla historicos (Que fueron publicos y se setear
 
 # Explicación del funcionamiento en codigo
 Los modulos/librerias utilizadas fueron: 
-- [x] "PyDrive2" (es una biblioteca contenedora de google-api-python-client que simplifica muchas tareas comunes de Google Drive API V2 y la autenticación como tal para Google y GoogleDrive)
-- [x] "Create_Service" es un metodo implementado en el script Google.py y utilizado por nuestrro script principal GoogleDrive.py (Es utilizado para crear un servicio de google dado un cliente, api_name, api_version y scopes. En nuestrro caso, como tenemos nuestras propias credenciales brindadas por Google en el archivo client_secrets.json que descargamos de https://console.cloud.google.com/apis/credentials?project=meli-challenge-354322 se las proporcionamos al servicio junto con el alcance https://mail.google.com/ para poder enviar correos electronicos con el API de gmail)
-- [x] "base64" (Utilizado para poder codificar todo el contenido del correo que vamos a enviar)
-- [x] "MIMEMultipart" y "MIMEText" (MIMEMultipart es un estándar de Internet que se utiliza para admitir la transferencia de uno o varios archivos adjuntos de texto y que no son de texto. Los archivos adjuntos que no son de texto pueden incluir archivos de gráficos, audio y video. MIMEText se utiliza para enviar correos electrónicos de texto.)
-- [x] "psycopg2" (Psycopg es el adaptador de base de datos PostgreSQL más popular para el lenguaje de programación Python. desarrollado principalmente en C como un envoltorio de libpq, lo que resulta en que sea eficiente y seguro. Cuenta con cursores del lado del cliente y del lado del servidor.)
-- [x] "getpass" (es una forma segura de solicitar la contraseña sin que se visualice en consola )
-- [x] "cryptography" (por medio del modulo fernet podemos encriptar mediante una llave y un objeto cualquier texto)
+- [x] **PyDrive2** (es una biblioteca contenedora de google-api-python-client que simplifica muchas tareas comunes de Google Drive API V2 y la autenticación como tal para Google y GoogleDrive)
+- [x] **Create_Service** es un metodo implementado en el script Google.py y utilizado por nuestrro script principal GoogleDrive.py (Es utilizado para crear un servicio de google dado un cliente, api_name, api_version y scopes. En nuestrro caso, como tenemos nuestras propias credenciales brindadas por Google en el archivo client_secrets.json que descargamos de https://console.cloud.google.com/apis/credentials?project=meli-challenge-354322 se las proporcionamos al servicio junto con el alcance https://mail.google.com/ para poder enviar correos electronicos con el API de gmail)
+- [x] **base64** (Utilizado para poder codificar todo el contenido del correo que vamos a enviar)
+- [x] **MIMEMultipart** y "MIMEText" (MIMEMultipart es un estándar de Internet que se utiliza para admitir la transferencia de uno o varios archivos adjuntos de texto y que no son de texto. Los archivos adjuntos que no son de texto pueden incluir archivos de gráficos, audio y video. MIMEText se utiliza para enviar correos electrónicos de texto.)
+- [x] **psycopg2** (Psycopg es el adaptador de base de datos PostgreSQL más popular para el lenguaje de programación Python. desarrollado principalmente en C como un envoltorio de libpq, lo que resulta en que sea eficiente y seguro. Cuenta con cursores del lado del cliente y del lado del servidor.)
+- [x] **getpass** (es una forma segura de solicitar la contraseña sin que se visualice en consola )
+- [x] **cryptography** (por medio del modulo fernet podemos encriptar mediante una llave y un objeto cualquier texto)
  
 URL a Gitlab, Dockerhub:
-https://gitlab.com/jnaran24/challenge-docs-en-drive-publicos/-/issues/1
-https://hub.docker.com/repository/docker/ee106as45d68514f1/meli-challenge
+https://gitlab.com/jnaran24/challenge-docs-en-drive-publicos/-/issues/1 ...
+![image](https://user-images.githubusercontent.com/32200374/176305944-fdb7c621-c366-4297-ab39-23ee708f9052.png) ...
+
+https://hub.docker.com/repository/docker/ee106as45d68514f1/meli-challenge ...
+![image](https://user-images.githubusercontent.com/32200374/176306039-d65456fd-70cc-4336-b11d-152f9dc466d0.png)
+
