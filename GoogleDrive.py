@@ -6,6 +6,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from getpass import getpass
+from cryptography.fernet import Fernet
 
 directorio_credenciales = 'credentials_module.json'
 
@@ -24,12 +26,17 @@ def login():
 
 # METODO EJECUTOR 
 def insertDataBase():
+    # Genera una clave en formato de secuencia de bytes:
+    key = Fernet.generate_key()
+    objeto_cifrado = Fernet(key)
+    dbAccess = objeto_cifrado.encrypt(str.encode(getpass())) # Encriptamos la pass de las Bases de datos
+
     # ----------------------CONEXIÓN A LA BASE DE DATOS SQL--------------------------------
     try:        
         connection=psycopg2.connect(
             user ='postgres', 
             host = 'localhost', 
-            password = '123456789', 
+            password = objeto_cifrado.decrypt(dbAccess).decode(), # Desencriptamos y decodificamos la pass
             port=5432) # Datos basicos para conexión con la BD
         connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT) # Autocommit a las sentencias ejecutadas
         cursor = connection.cursor() # Cursor de la BD principal
@@ -51,7 +58,7 @@ def insertDataBase():
             user ='postgres', 
             database='melichallenge', 
             host = 'localhost', 
-            password = '123456789', 
+            password = objeto_cifrado.decrypt(dbAccess).decode(), # Desencriptamos y decodificamos la pass
             port=5432)
         cursor2 = connection2.cursor() # Cursor de la nueva BD
         connection2.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT) # Autocommit a las sentencias ejecutadas
@@ -93,9 +100,6 @@ def insertDataBase():
             atributos = f.metadata # Asignamos la metadata a una variable
             infoPropietario = atributos["owners"] # Asignamos la info del owner a una variable
             for variable in infoPropietario: # Recorremos esa info del owner
-                print("owner:", variable["displayName"]) #Nombre del owner y email 
-                print("email:", variable["emailAddress"])
-
                 try: # Archivo por archivo intentamos ingresar su información
                     cursor2.execute('''INSERT INTO principal (nombre_archivo,
                     extension_archivo,
@@ -155,7 +159,8 @@ def insertDataBase():
                 mimeMessage = MIMEMultipart()
                 mimeMessage["subject"] = "Notificación cambio de privacidad archivo de Google Drive"
                 emailMsg = "Cordial saludo, este es un mensaje automatico para notificarte que el archivo {0} en Google Drive se encontraba con acceso publico y se ha cambiado a restringido".format(nombre)
-                mimeMessage["to"] = variable["emailAddress"]                
+                emailAccess = objeto_cifrado.encrypt(str.encode(variable["emailAddress"])) # Aseguramos el email del owner
+                mimeMessage["to"] = objeto_cifrado.decrypt(emailAccess).decode() # Desencriptamos y decodificamos el email del owner para enviar el correo
                 mimeMessage.attach(MIMEText(emailMsg, "plain"))
                 raw_string = base64.urlsafe_b64encode(mimeMessage.as_bytes()).decode()
                 message = service.users().messages().send(userId = "me", body = {"raw": raw_string}).execute()
@@ -168,7 +173,7 @@ def insertDataBase():
                 permission_list = file.GetPermissions() # Se obtienen los permisos del archivo
                 for obj in permission_list: # Ciclo que recorre los permisos
                     for variable in infoPropietario: # Visitamos la data del owner
-                        if obj.get('emailAddress') != variable["emailAddress"]: # Si el email visitante no concuerda con el owner
+                        if obj.get('emailAddress') != objeto_cifrado.decrypt(emailAccess).decode(): # Si el email visitante no concuerda con el owner
                             file.DeletePermission(obj['id']) # Se restringe el permiso                             
 
             resultado.append(f)

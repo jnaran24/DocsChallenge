@@ -10,6 +10,7 @@ ADD client_secrets.json .
 RUN pip install pydrive2
 RUN pip install psycopg2
 RUN pip install google-auth-oauthlib
+RUN pip install cryptography
 
 RUN pip install requests
 
