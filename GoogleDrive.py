@@ -22,7 +22,7 @@ def login():
     
     return GoogleDrive(gauth)
 
-# METODO EJECUTOR
+# METODO EJECUTOR 
 def insertDataBase():
     # ----------------------CONEXIÓN A LA BASE DE DATOS SQL--------------------------------
     try:        
@@ -111,6 +111,19 @@ def insertDataBase():
                     ))
                 except Exception as ex:
                     print(ex)
+                    
+                    cursor2.execute('''UPDATE principal 
+                    SET extension_archivo='{0}',
+                    propietario='{1}',
+                    visibilidad='{2}',
+                    fecha_modificacion='{3}' 
+                    WHERE nombre_archivo = '{4}' '''.format(
+                        extension,
+                        variable["displayName"],
+                        visibilidad,
+                        fechaUltimaMod,
+                        nombre
+                    ))
                     pass            
 
             if(visibilidad == True): #True si visibilidad es publica, False si es privada
