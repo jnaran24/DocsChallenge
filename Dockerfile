@@ -1,7 +1,7 @@
 # Dockerfile, Image, Container
 FROM python:3.10.5
 
-ADD main.py .
+ADD GoogleDrive.py .
 
 RUN pip install requests
 
