@@ -3,7 +3,11 @@
 # Requisitos
 1. Python 3.10.5 y pip
 2. PostgreSQL 14.4 con su configuración inicial (poseer una contraseña y tener la base de datos por default)
-3. A la aplicación se le implemento Docker, y se encuentra en un contenedor de DockerHub, sin embargo Google pide manualmente aceptar permisos de acceso y privilegio para envio de correos, por lo tanto, no se encuentra disponible para hacerle el run (https://hub.docker.com/repository/docker/ee106as45d68514f1/meli-challenge) Así que si se desea bajarlo por docker y hacer pull, se debe de tener en cuenta de contar con Docker en la maquina/ambiente virtual
+3. Necesitamos para cada persona que quiera utilizar el programa, crear un proyecto en https://console.cloud.google.com/apis/dashboard , en este caso se le llamo MELI-CHALLENGE y creamos una credencial ID de Cliente OAuth para un tipo de aplicación Web. (En origenes autorizados de javascript : http://localhost:8080 Y en URI de redireccionamiento autorizados: http://localhost:8080/) Una vez creada, descargamos dicha credencial
+![image](https://user-images.githubusercontent.com/32200374/176302473-4123b4a6-858a-4e26-96f4-0ac2755f0e8a.png)
+Descargamos el JSON y lo renombramos "client_secrets.json" y lo ponemos en la raiz del proyecto
+
+5. A la aplicación se le implemento Docker, y se encuentra en un contenedor de DockerHub, sin embargo Google pide manualmente aceptar permisos de acceso y privilegio para envio de correos, por lo tanto, no se encuentra disponible para hacerle el run (https://hub.docker.com/repository/docker/ee106as45d68514f1/meli-challenge) Así que si se desea bajarlo por docker y hacer pull, se debe de tener en cuenta de contar con Docker en la maquina/ambiente virtual
 
 
 # Funcionamiento
@@ -60,5 +64,6 @@ Los modulos/librerias utilizadas fueron:
 - [x] "base64" (Utilizado para poder codificar todo el contenido del correo que vamos a enviar)
 - [x] "MIMEMultipart" y "MIMEText" (MIMEMultipart es un estándar de Internet que se utiliza para admitir la transferencia de uno o varios archivos adjuntos de texto y que no son de texto. Los archivos adjuntos que no son de texto pueden incluir archivos de gráficos, audio y video. MIMEText se utiliza para enviar correos electrónicos de texto.)
 - [x] "psycopg2" (Psycopg es el adaptador de base de datos PostgreSQL más popular para el lenguaje de programación Python. desarrollado principalmente en C como un envoltorio de libpq, lo que resulta en que sea eficiente y seguro. Cuenta con cursores del lado del cliente y del lado del servidor.)
-- [x] "getpass" (es una forma segura de solicitar la contraseña sin que se visualice en consola ), "cryptography" (por medio del modulo fernet podemos encriptar mediante una llave y un objeto cualquier texto)
+- [x] "getpass" (es una forma segura de solicitar la contraseña sin que se visualice en consola )
+- [x] "cryptography" (por medio del modulo fernet podemos encriptar mediante una llave y un objeto cualquier texto)
  
