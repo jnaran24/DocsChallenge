@@ -5,4 +5,4 @@ ADD GoogleDrive.py .
 
 RUN pip install requests
 
-CMD [ "python", "./main.py" ]
+CMD [ "python", "./GoogleDrive.py" ]
