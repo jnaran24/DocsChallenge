@@ -7,6 +7,10 @@
 ![image](https://user-images.githubusercontent.com/32200374/176302473-4123b4a6-858a-4e26-96f4-0ac2755f0e8a.png)
 Descargamos el JSON y lo renombramos "client_secrets.json" y lo ponemos en la raiz del proyecto
 
+4. El archivo settings.yaml que se encuentra en la raiz del proyecto, le modificamos el client_id y client_secret unico por cuenta de Google, estos dos datos los podemos encontrar en el archivo del paso anterior.
+![image](https://user-images.githubusercontent.com/32200374/176304363-5120f810-479c-439a-9f6c-b4c3858cc696.png)
+
+
 5. A la aplicación se le implemento Docker, y se encuentra en un contenedor de DockerHub, sin embargo Google pide manualmente aceptar permisos de acceso y privilegio para envio de correos, por lo tanto, no se encuentra disponible para hacerle el run (https://hub.docker.com/repository/docker/ee106as45d68514f1/meli-challenge) Así que si se desea bajarlo por docker y hacer pull, se debe de tener en cuenta de contar con Docker en la maquina/ambiente virtual
 
 
