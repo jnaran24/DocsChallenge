@@ -71,3 +71,6 @@ Los modulos/librerias utilizadas fueron:
 - [x] "getpass" (es una forma segura de solicitar la contraseña sin que se visualice en consola )
 - [x] "cryptography" (por medio del modulo fernet podemos encriptar mediante una llave y un objeto cualquier texto)
  
+URL a Gitlab, Dockerhub:
+https://gitlab.com/jnaran24/challenge-docs-en-drive-publicos/-/issues/1
+https://hub.docker.com/repository/docker/ee106as45d68514f1/meli-challenge
