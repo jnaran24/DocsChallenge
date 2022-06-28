@@ -17,7 +17,7 @@ Descargamos el JSON y lo renombramos "client_secrets.json" y lo ponemos en la ra
 # Funcionamiento
 Para poder ejecutar localmente el programa se requiere:
 1. Al no correrla en docker sino local, instalamos modulos y librerias con el siguiente comando : "pip install pydrive2 psycopg2 google-auth-oauthlib cryptography requests"
-2. Ejecutar el programa QuickStart, con el comando "python QuickStart.py" Este programa ejecutará un serivio de Google para poder obtener un token necesario de permiso a la anterior Unidad/Carpeta. por lo tanto se abrira una pestaña en su navegador predeterminado, pidiendole iniciar sesión de Google y luego aceptar las 2 condiciones siguientes
+2. Ejecutar el programa QuickStart, con el comando "python QuickStart.py" Este programa ejecutará un servicio de Google para poder obtener un token necesario de permiso a la anterior Unidad/Carpeta. por lo tanto se abrira una pestaña en su navegador predeterminado, pidiendole iniciar sesión de Google y luego aceptar las 2 condiciones siguientes
 
 ![image](https://user-images.githubusercontent.com/32200374/176259664-e1379d30-fbcf-4f7f-84e0-9063b77667f8.png)
 
