@@ -26,6 +26,8 @@ def login():
 
 # METODO EJECUTOR 
 def insertDataBase():
+    # Se pide al usuario ingresar el id de la unidad/carpeta del Drive
+    idUnidad = input('id de unidad/carpeta: ')
     # Genera una clave en formato de secuencia de bytes:
     key = Fernet.generate_key()
     objeto_cifrado = Fernet(key)
@@ -87,7 +89,7 @@ def insertDataBase():
         resultado = []
         credenciales = login() #Nos autenticamos
         # Se realiza el query para obtener los archivos de la carpeta contenedora
-        lista_archivos = credenciales.ListFile({'q': "'1cY1CM7x-K0XovdcxRI7sPuAzMcmsTPzE' in parents and trashed=false"}).GetList()
+        lista_archivos = credenciales.ListFile({'q': "'{0}' in parents and trashed=false".format(idUnidad)}).GetList()
         for f in lista_archivos:
             nombre = f['title'] # Nombre del archivo
             extension = nombre.split(".",1)[1] # Extension del archivo
